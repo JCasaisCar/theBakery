@@ -12,7 +12,7 @@
         }
 
         public function muestraResumen(): string {
-            return parent::muestraResumen() . ", Relleno: " . $this->relleno;
+            return parent::muestraResumen() . ", Relleno: " . $this->relleno . "<br>";
         }
     }
 ?>

@@ -103,7 +103,7 @@
 
 
         public function muestraResumen(): string {
-            return "Nombre: " . $this->nombre . ", Cantidad de pedidos: " . $this->numPedidosEfectuados;
+            return "Nombre: " . $this->nombre . ", Cantidad de pedidos: " . $this->numPedidosEfectuados . "<br>";
         }
 
  
@@ -120,13 +120,13 @@
         public function comprar(Dulce $d): bool {
             // Verificamos si el "dulce" ya fue comprado
             if ($this->listaDeDulces($d)) {
-                echo "Ya has comprado este dulce anteriormente";
+                echo "Ya has comprado este dulce anteriormente" . "<br>";
             } else {
                 // Agregamos el "dulce" al "array" de "dulcesComprados"
                 $this->dulcesComprados[] = $d;
                 // Incrementamos el contador de pedidos
                 $this->numPedidosEfectuados++;
-                echo "Dulce " . $d->muestraResumen() . " comprado";
+                echo "Dulce " . $d->muestraResumen() . " comprado" . "<br>";
             }
             return true;
         }
@@ -135,16 +135,16 @@
             if ($this->listaDeDulces($d)) {
                 // Almacena el comentario usando el hash del objeto Dulce
                 $this->comentarios[spl_object_hash($d)] = $comentario;
-                echo "Comentario agregado al dulce" . $comentario;
+                echo "Comentario agregado al dulce" . $comentario . "<br>";
             } else {
-                echo "El dulce no ha sido comprado, no se puede valorar";
+                echo "El dulce no ha sido comprado, no se puede valorar" . "<br>";
             }
         }
 
         public function listarPedidos(): void {
-            echo ("Pedidos realizados por " . $this->nombre);
+            echo ("Pedidos realizados por " . $this->nombre . "<br>");
             foreach ($this->dulcesComprados as $dulce) {
-                echo "- " . $dulce->muestraResumen();
+                echo "- " . $dulce->muestraResumen() . "<br>";
             }
         }
     }

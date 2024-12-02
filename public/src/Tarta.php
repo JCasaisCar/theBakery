@@ -19,16 +19,16 @@
 
          public function muestraComensalesPosibles(): string {
             if ($this->minNumComensales === $this->maxNumComensales) {
-                return "Para " . $this->minNumComensales . " comensales";
+                return "Para " . $this->minNumComensales . " comensales <br>";
             } else {
-                return "De " . $this->minNumComensales . " a " . $this->maxNumComensales . " comensales";
+                return "De " . $this->minNumComensales . " a " . $this->maxNumComensales . " comensales" . "<br>";
             }
          }
  
          public function muestraResumen(): string {
             // Usamos "implode("separador", array)" para crear un "string" de un array con los valores separados por el separador que hemos elegido
             $rellenosString = implode(", ", $this->rellenos); 
-            return parent::muestraResumen() . ", Rellenos: " . $rellenosString . ", Número Pisos: " . $this->numPisos . ", Comensales Mínimos: " . $this->minNumComensales . ", Comensales Máximos: " . $this->maxNumComensales;
+            return parent::muestraResumen() . ", Rellenos: " . $rellenosString . ", Número Pisos: " . $this->numPisos . ", Comensales Mínimos: " . $this->minNumComensales . ", Comensales Máximos: " . $this->maxNumComensales . "<br>";
          }
      }
 ?>
