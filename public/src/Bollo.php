@@ -6,6 +6,7 @@
         private string $relleno;
 
         public function __construct(string $nombre, float $precio, string $descripcion, string $categoria, string $relleno) {
+            // Para rellenar el constructor del padre pasando los atributos por el hijo usamos "parent::__construct(atributos)"
             parent::__construct($nombre, $precio, $descripcion, $categoria);
             $this->relleno = $relleno;
         }
