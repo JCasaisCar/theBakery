@@ -57,14 +57,4 @@
             return "Nombre: " . $this->getNombre() . ", Precio: " . $this->getPrecio() . "€, Descripción: " . $this->getDescripcion() . ", Categoria: " . $this->getCategoria() . ", IVA: " . self::$IVA . "% <br>";
         }
     }
-
-    // Para crear un objeto de la clase "Dulce"
-    $dulce = new Dulce("Tarta de Fresa", 18.50, "Deliciosa tarta de fresas del campo", "Tarta");
-
-    // Usamos "$objeto->getpropiedad()" para sacar el valor mediente "get" de una propiedad de un objeto
-    echo("El nombre es: " . $dulce->getNombre() . "<br>");
-    echo("El precio es: " . $dulce->getPrecio() . "€<br>");
-    echo("El descripcion es: " . $dulce->getDescripcion() . "<br>");
-    echo("El categoria es: " . $dulce->getCategoria() . "<br>");
-    echo("El IVA es: " . Dulce::getIVA() . "%"); // Para acceder a un método "static" usamos "Clase::getAtributo()"
 ?>
