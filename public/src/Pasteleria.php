@@ -39,5 +39,35 @@
                 echo "- " . $cliente->getNombre() . "<br>";
             }
         }
+
+
+        public function realizarCompra(Cliente $cliente, Dulce $dulce): void {
+            try {
+                $cliente->comprar($dulce); // Intentamos comprar el dulce
+                echo "Compra realizada con éxito" . "<br>";
+            } catch (DulceNoCompradoException $e) {
+                // Capturamos la excepción y mostramos el mensaje al usuario
+                echo "Error: " . $e->getMessage() . "<br>";
+            }
+        }
+
+        public function valorarDulce(Cliente $cliente, Dulce $dulce, string $comentario): void {
+            try {
+                $cliente->valorar($dulce, $comentario); // Intentamos valorar el dulce
+                echo "Valoración realizada con éxito" . "<br>";
+            } catch (DulceNoCompradoException $e) {
+                // Capturamos la excepción y mostramos el mensaje al usuario
+                echo "Error: " . $e->getMessage() . "<br>";
+            }
+        }
+
+        public function listarPedidosCliente(Cliente $cliente): void {
+            try {
+                $cliente->listarPedidos(); // Intentamos listar los pedidos
+            } catch (DulceNoCompradoException $e) {
+                // Capturamos la excepción y mostramos el mensaje al usuario
+                echo "Error: " . $e->getMessage() . "<br>";
+            }
+        }
     }
 ?>

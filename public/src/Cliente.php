@@ -116,11 +116,12 @@
             return false;
         }
 
-        // Pasamos directamente como parámetro el objeto "Dulce" para cojer el "array" de la lista de "dulces"
-        public function comprar(Dulce $d): bool {
+        // Pasamos directamente como parámetro el objeto "Dulce" para coger el "array" de la lista de "dulces"
+        public function comprar(Dulce $d): self {
             // Verificamos si el "dulce" ya fue comprado
             if ($this->listaDeDulces($d)) {
-                echo "Ya has comprado este dulce anteriormente" . "<br>";
+                // Lanzamos una excepción si el dulce ya fue comprado
+                throw new DulceNoCompradoException("Ya has comprado este dulce anteriormente.");
             } else {
                 // Agregamos el "dulce" al "array" de "dulcesComprados"
                 $this->dulcesComprados[] = $d;
@@ -128,7 +129,7 @@
                 $this->numPedidosEfectuados++;
                 echo "Dulce " . $d->muestraResumen() . " comprado" . "<br>";
             }
-            return true;
+            return $this; // Ponemos "return $this" para poder encadenar los métodos
         }
 
         public function valorar(Dulce $d, string $comentario): void {
@@ -137,14 +138,19 @@
                 $this->comentarios[spl_object_hash($d)] = $comentario;
                 echo "Comentario agregado al dulce" . $comentario . "<br>";
             } else {
-                echo "El dulce no ha sido comprado, no se puede valorar" . "<br>";
+                // Lanzamos una excepción si el dulce no ha sido comprado
+                throw new DulceNoCompradoException("El dulce no ha sido comprado, no se puede valorar.");
             }
         }
 
         public function listarPedidos(): void {
-            echo ("Pedidos realizados por " . $this->nombre . "<br>");
-            foreach ($this->dulcesComprados as $dulce) {
-                echo "- " . $dulce->muestraResumen() . "<br>";
+            if (empty($this->dulcesComprados)) {
+                echo "No se han realizado pedidos aún." . "<br>";
+            } else {
+                echo ("Pedidos realizados por " . $this->nombre . "<br>");
+                foreach ($this->dulcesComprados as $dulce) {
+                    echo "- " . $dulce->muestraResumen() . "<br>";
+                }
             }
         }
     }
