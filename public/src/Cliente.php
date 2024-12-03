@@ -1,4 +1,6 @@
 <?php
+    namespace theBakery;
+
     // Para incluir las excepciones
     require_once("../util/PasteleriaException.php");
     require_once("../util/DulceNoCompradoException.php");

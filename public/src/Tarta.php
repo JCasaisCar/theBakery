@@ -1,4 +1,6 @@
 <?php
+    namespace theBakery;
+
      // Usamos "require_once("archivo.extensión")" para incluir un archivo
      require_once("Dulce.php");
 

@@ -1,4 +1,9 @@
 <?php
+    use theBakery\Cliente;
+    use theBakery\Bollo;
+    use theBakery\Tarta;
+    use theBakery\Pasteleria;
+
     // Incluimos los archivos necesarios
     require_once("../src/Cliente.php");
     require_once("../src/Bollo.php");
