@@ -1,4 +1,10 @@
 <?php
+    // Para incluir las excepciones
+    require_once("../util/PasteleriaException.php");
+    require_once("../util/DulceNoCompradoException.php");
+    require_once("../util/DulceNoEncontradoException.php");
+    require_once("../util/ClienteNoEncontradoException.php");
+
     class Cliente {
         private string $nombre;
         private string $usuario;
