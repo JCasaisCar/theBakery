@@ -1,6 +1,8 @@
 <?php
+    // No, los hijos no necesitan implementar el interfaz "Resumible" porque lo heredan de "Dulce", pero deben definir el método "muestraResumen()" al ser "Dulce" una clase abstracta
+    require_once("Resumible.php");
     // Al hacer la clase "Dulce" abstracta evita instancias directas, obligamos a las hijas a implementar métodos clave y mejoramos la claridad del diseño
-    abstract class Dulce {
+    abstract class Dulce implements Resumible {
         private string $nombre;
         private float $precio;
         private string $descripcion;
