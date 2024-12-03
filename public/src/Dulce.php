@@ -1,5 +1,6 @@
 <?php
-    class Dulce {
+    // Al hacer la clase "Dulce" abstracta evita instancias directas, obligamos a las hijas a implementar métodos clave y mejoramos la claridad del diseño
+    abstract class Dulce {
         private string $nombre;
         private float $precio;
         private string $descripcion;
