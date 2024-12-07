@@ -1,5 +1,5 @@
 -- Borramos la BBDD si existe
-DROP DATABASE theBakery IF EXISTS;
+DROP DATABASE IF EXISTS theBakery;
 -- Creamos la BBDD si no existe
 CREATE DATABASE IF NOT EXISTS theBakery;
 
