@@ -139,16 +139,14 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para insertar un nuevo usuario en la base de datos
+                // Preparamos la consulta SQL para insertar un nuevo dulce en la base de datos
                 $query = $conexion->prepare("INSERT INTO dulces (nombre, precio, descripcion, categoria, iva) VALUES
                 (?, ?, ?, ?, ?);"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$this->nombre, $this->precio, $this->descripcion, $this->categoria, self::$IVA])) {
-                        // Si la inserción es exitosa, mostramos un mensaje y redirigimos a la página de login
                         echo("Datos guardados correctamente, dulce creado satisfactoriamente <br>");
                 } else {
-                        // Si ocurre un error al insertar, mostramos un mensaje y redirigimos a la página de registro
                         echo("Datos no guardados, dulce no creado <br>");
                 }
         }
@@ -160,12 +158,11 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para insertar un nuevo usuario en la base de datos
+                // Preparamos la consulta SQL para seleccionar los dulces en la base de datos
                 $query = $conexion->prepare("SELECT * FROM dulces;");
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute()) {
-                        // Si la inserción es exitosa, mostramos un mensaje y redirigimos a la página de login
                         echo("Los datos de todos los dulces se han leído correctamente <br>");
                         
                         // Obtenemos el resultado de la consulta
@@ -178,7 +175,6 @@
                                 return [];
                         }
                 } else {
-                        // Si ocurre un error al insertar, mostramos un mensaje y redirigimos a la página de registro
                         echo("Fallo en la consulta de los datos de todos los dulces <br>");
                         return [];
                 }
@@ -189,13 +185,13 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para insertar un nuevo usuario en la base de datos
+                // Preparamos la consulta SQL para seleccionar un dulce por su id en la base de datos
                 $query = $conexion->prepare("SELECT * FROM dulces WHERE id=?;"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$id])) {
                         // Obtenemos el resultado de la consulta
-                        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+                        $resultado = $query->fetch(PDO::FETCH_ASSOC); // Usamos "PDO::FETCH_ASSOC" para que nos devuelva un array clave valor
                         if ($resultado) {
                                 echo("Los datos de el dulce de id " . $id . " se han leído correctamente <br>");
                                 return $resultado;
@@ -204,7 +200,6 @@
                                 return [];
                         }
                 } else {
-                        // Si ocurre un error al insertar, mostramos un mensaje y redirigimos a la página de registro
                         echo("Fallo en la consulta de los datos de el dulce de id " . $id . "<br>");
                         return [];
                 }
@@ -217,15 +212,13 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para insertar un nuevo usuario en la base de datos
+                // Preparamos la consulta SQL para actualizar un dulce en la base de datos
                 $query = $conexion->prepare("UPDATE dulces SET nombre=?, precio=?, descripcion=?, categoria=?, iva=? WHERE id = ?;"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$this->nombre, $this->precio, $this->descripcion, $this->categoria, self::$IVA, $id])) {
-                        // Si la inserción es exitosa, mostramos un mensaje y redirigimos a la página de login
                         echo("El dulce con id " . $id . " se ha actualizado <br>");
                 } else {
-                        // Si ocurre un error al insertar, mostramos un mensaje y redirigimos a la página de registro
                         echo("El dulce con id " . $id . " no se ha actualizado <br>");
                 }
         }
@@ -237,15 +230,13 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para insertar un nuevo usuario en la base de datos
+                // Preparamos la consulta SQL para eliminar un dulce en la base de datos
                 $query = $conexion->prepare("DELETE FROM dulces WHERE id = ?;"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$id])) {
-                        // Si la inserción es exitosa, mostramos un mensaje y redirigimos a la página de login
                         echo("El dulce con id " . $id . " se ha eliminado correctamente <br>");
                 } else {
-                        // Si ocurre un error al insertar, mostramos un mensaje y redirigimos a la página de registro
                         echo("El dulce con id " . $id . " no se ha eliminado <br>");
                 }
         }

@@ -12,7 +12,7 @@
     // Bollo
     echo("<h1>Prueba bollo: </h1> <br>");
     $bollo = new Bollo("Croissant", 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
-    $bollo->createDulce(); // Prueba el método para crear
+    $bollo->createDulce(); // Probamos el método "create"
 
     // Probamos el método "readAll"
     $resultado = $bollo->readAllDulce();
@@ -28,7 +28,7 @@
     echo "</pre>";
 
     // Probamos el método "update"
-    $bollo->setNombre("Croissant Actualizado"); // Cambia atributos con un método `set`
+    $bollo->setNombre("Croissant Actualizado");
     $bollo->updateDulce($idDulce);
 
     // Probamos el método "delete"
@@ -38,7 +38,7 @@
     // Chocolate
     echo("<h1>Prueba chocolate: </h1> <br>");
     $chocolate = new Chocolate("Barra de Chocolate", 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
-    $chocolate->createDulce(); // Prueba el método para crear
+    $chocolate->createDulce(); // Probamos el método "create"
 
     // Probamos el método "readAll"
     $resultado = $chocolate->readAllDulce();
@@ -54,7 +54,7 @@
     echo "</pre>";
 
     // Probamos el método "update"
-    $chocolate->setNombre("Chocolate con Almendras Actualizado"); // Cambia atributos con un método `set`
+    $chocolate->setNombre("Chocolate con Almendras Actualizado");
     $chocolate->updateDulce($idDulce);
 
     // Probamos el método "delete"
@@ -64,7 +64,7 @@
     // Tarta
     echo("<h1>Prueba tarta: </h1> <br>");
     $tarta = new Tarta("Tarta de Queso", 15.00, "Deliciosa tarta de queso al horno", "Tartas", ["chocolate", "galleta"], 2, 4, 20);
-    $tarta->createDulce(); // Prueba el método para crear
+    $tarta->createDulce(); // Probamos el método "create"
 
     // Probamos el método "readAll"
     $resultado = $tarta->readAllDulce();
@@ -80,7 +80,7 @@
     echo "</pre>";
 
     // Probamos el método "update"
-    $tarta->setNombre("Tarta de Queso Actualizada"); // Cambia atributos con un método `set`
+    $tarta->setNombre("Tarta de Queso Actualizada");
     $tarta->updateDulce($idDulce);
 
     // Probamos el método "delete"
@@ -90,7 +90,7 @@
     // Bollo
     echo("<h1>Prueba bollo: </h1> <br>");
     $bollo = new Bollo("Croissant", 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
-    $bollo->createDulce(); // Prueba el método para crear
+    $bollo->createDulce(); // Probamos el método "create"
 
     // Probamos el método "readAll"
     $resultado = $bollo->readAllDulce();
@@ -106,7 +106,7 @@
     echo "</pre>";
 
     // Probamos el método "update"
-    $bollo->setNombre("Croissant Actualizado"); // Cambia atributos con un método `set`
+    $bollo->setNombre("Croissant Actualizado");
     $bollo->updateDulce($idDulce);
 
     // Probamos el método "delete"
