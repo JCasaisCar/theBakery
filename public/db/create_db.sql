@@ -10,10 +10,10 @@ USE theBakery;
 CREATE TABLE IF NOT EXISTS dulces (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
     precio DECIMAL(10, 2) NOT NULL,
-    stock INT DEFAULT 0,
-    imagen VARCHAR(255),
+    descripcion VARCHAR(1000) NOT NULL,
+    categoria VARCHAR(100) NOT NULL,
+    iva FLOAT NOT NULL,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Usamos "TIMESTAMP" para almacenar una fecha y una hora, y usamos "CURRENT_TIMESTAMP" para que almacene la fecha y la hora actuales
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- Usamos "ON UPDATE CURRENT_TIMESTAMP" para que cada vez que actualizamos el registro, se actualice esta columna automáticamente con la fecha y hora de la última modificación
 );
