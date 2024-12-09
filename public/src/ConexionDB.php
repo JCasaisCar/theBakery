@@ -1,4 +1,8 @@
 <?php
+namespace TheBakery;
+
+use PDO;
+use PDOException;
 class ConexionDB {
     // Propiedad estática para mantener la única instancia de la clase
     private static $instancia = null;
