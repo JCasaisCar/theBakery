@@ -1,7 +1,7 @@
 <?php
-    use theBakery\Bollo;
-    use theBakery\Tarta;
-    use theBakery\Chocolate;
+    use theBakery\public\src\Bollo;
+    use theBakery\public\src\Tarta;
+    use theBakery\public\src\Chocolate;
 
     // Incluimos los archivos necesarios
     require_once("../src/Bollo.php");

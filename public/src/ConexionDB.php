@@ -1,5 +1,5 @@
 <?php
-namespace TheBakery;
+namespace theBakery\public\src;
 
 use PDO;
 use PDOException;

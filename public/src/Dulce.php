@@ -1,5 +1,5 @@
 <?php
-    namespace theBakery;
+    namespace theBakery\public\src;
 
     // No, los hijos no necesitan implementar el interfaz "Resumible" porque lo heredan de "Dulce", pero deben definir el método "muestraResumen()" al ser "Dulce" una clase abstracta
     require_once("Resumible.php");

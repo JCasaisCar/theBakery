@@ -20,10 +20,11 @@ CREATE TABLE IF NOT EXISTS dulces (
 
 -- Creamos una tabla para usuarios (clientes y administradores)
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    user VARCHAR(50) UNIQUE NOT NULL, -- Usamos "UNIQUE" para que sea único, es decir, que no se repitan valores en el registro
-    password VARCHAR(255) NOT NULL, -- Guardaremos la contraseña hasheada
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(20) NOT NULL,
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(50) NOT NULL,
     rol ENUM('admin', 'cliente') DEFAULT 'cliente', -- Para determinar si es admin o cliente
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -40,11 +41,13 @@ CREATE TABLE IF NOT EXISTS clientes (
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+
+
 -- Insertamos los usuarios de prueba
-INSERT INTO usuarios (nombre, user, password, rol)
+INSERT INTO usuarios (name, username, password, email, rol)
 VALUES
-("Administrador", "admin", SHA2("admin", 256), "admin"), -- Usamos "SHA2("admin", 256)" para generar un hash SHA-256 de la cadena "admin"
-("Usuario Cliente", "usuario", SHA2("usuario", 256), "cliente");
+("Administrador", "admin", "$2y$10$5Po6LH4.6Nrv1fAnVXeS3e.UVCE8pEuorKEhquhkdNmcITWWdex.O", "admin@ilerna.com", "admin"), -- Usamos "SHA2("admin", 256)" para generar un hash SHA-256 de la cadena "admin"
+("Usuario Cliente", "usuario", "$2y$10$l.xuOnbMVdN4SyaR1cVs5eGXr692ZgtMEtHsSR2FkUxvYeN6gnXkC", "cliente@ilerna.com", "cliente");
 
 -- Insertamos los datos de prueba para clientes
 INSERT INTO clientes (nombre, email, telefono, user, password)

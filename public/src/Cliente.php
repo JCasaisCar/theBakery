@@ -1,5 +1,10 @@
 <?php
-    namespace theBakery;
+    namespace theBakery\public\src;
+
+    use theBakery\public\util\PasteleriaException;
+    use theBakery\public\util\DulceNoCompradoException;
+    use theBakery\public\util\DulceNoEncontradoException;
+    use theBakery\public\util\ClienteNoEncontradoException;
 
     // Para incluir las excepciones
     require_once("../util/PasteleriaException.php");

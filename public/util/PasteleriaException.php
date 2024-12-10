@@ -1,5 +1,5 @@
 <?php
-    namespace theBakery;
+    namespace theBakery\public\util;
 
     // Usamos "\" antes de "Exception", debido a que la clase "Exception" se encuentra en el espacio de nombres "global" y no en un namespace específico
     class PasteleriaException extends \Exception {

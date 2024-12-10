@@ -1,5 +1,5 @@
 <?php
-    namespace theBakery;
+    namespace theBakery\public\src;
 
     interface Resumible {
         public function muestraResumen(): string;

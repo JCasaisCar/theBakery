@@ -1,8 +1,10 @@
 <?php
-    use theBakery\Cliente;
-    use theBakery\Bollo;
-    use theBakery\Tarta;
-    use theBakery\Pasteleria;
+    namespace theBakery\public\testing;
+
+    use theBakery\public\src\Cliente;
+    use theBakery\public\src\Bollo;
+    use theBakery\public\src\Tarta;
+    use theBakery\public\src\Pasteleria;
 
     // Incluimos los archivos necesarios
     require_once("../src/Cliente.php");
