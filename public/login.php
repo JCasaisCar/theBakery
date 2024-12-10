@@ -32,13 +32,27 @@
         // Obtenemos el resultado de la consulta
         $resultado = $query->fetch(PDO::FETCH_ASSOC);
 
+
+        // Preparamos una consulta SQL para seleccionar el rol de un nombre de usuario en la base de datos
+        $queryRol = $conexion->prepare("SELECT rol FROM usuarios WHERE username = ?");
+
+        // Ejecutamos la consulta
+        $queryRol->execute([$username]);
+
+        // Obtenemos el resultado de la consulta
+        $resultadoRol = $queryRol->fetch(PDO::FETCH_ASSOC);
+
+        $rol = $resultadoRol['rol'];
+
+
         // Verificamos si se obtuvo un resultado
         if ($resultado) {
             // Si el usuario existe, comparamos la contraseña proporcionada con la almacenada en la base de datos
             // Usamos "password_verify" para verificar que la contraseña es correcta
             if (password_verify($password, $resultado['password'])) {
                 echo "<script>
-                    alert('¡¡Bienvenido $username!!');
+                    document.cookie = 'username=$username; path=/';
+                    document.cookie = 'rol=$rol; path=/';
                     window.location.href = 'main.php';
                 </script>";
                 exit();
