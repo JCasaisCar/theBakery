@@ -30,6 +30,28 @@ CREATE TABLE IF NOT EXISTS usuarios (
 );
 
 
+-- Tabla de pedidos
+CREATE TABLE pedidos (
+    idPedido INT AUTO_INCREMENT PRIMARY KEY,  -- Identificador único del pedido
+    idCliente INT NOT NULL,                   -- Relación con usuarios
+    fechaPedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha del pedido
+    total DECIMAL(10, 2) DEFAULT 0.00,        -- Total del pedido
+    FOREIGN KEY (idCliente) REFERENCES usuarios(id) -- Relación con usuarios
+);
+
+-- Tabla de detalles de pedidos
+CREATE TABLE detalles_pedido (
+    idDetalle INT AUTO_INCREMENT PRIMARY KEY, -- Identificador único del detalle
+    idPedido INT NOT NULL,                    -- Relación con pedidos
+    nombreProducto VARCHAR(150) NOT NULL,     -- Nombre del producto
+    cantidad INT NOT NULL,                    -- Cantidad comprada
+    precioUnitario DECIMAL(10, 2) NOT NULL,   -- Precio por unidad
+    subtotal DECIMAL(10, 2) NOT NULL,         -- Subtotal (cantidad * precioUnitario)
+    FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido) -- Relación con pedidos
+);
+
+
+
 -- Insertamos los usuarios de prueba
 INSERT INTO usuarios (name, username, password, email, rol)
 VALUES

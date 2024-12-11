@@ -74,6 +74,17 @@ if (isset($_COOKIE)) {
             ];
         }
     }
+    // Calcular el total general de todos los `totalConIVA`
+    $totalGeneralConIVA = array_sum(array_column($productos, "totalConIVA"));
+    $productos[] = [
+        'categoria' => "",
+        'nombre' => "Total General",
+        'cantidad' => "",
+        'precioSinIVA' => "",
+        'precioConIVA' => "",
+        'totalSinIVA' => "",
+        'total' => $totalGeneralConIVA
+    ];       
 }
 
 
@@ -100,6 +111,18 @@ echo("
     </script>
 
     <script src='js/carrito.js'></script> <!-- carrito.js -->
+
+     <form id='guardarForm' method='POST' action='guardarDatosCarritoBBDD.php'>
+            <input type='hidden' name='productos' id='productosInput'>
+            <button type='submit' class='btn btn-primary mt-3'>Guardar en la Base de Datos</button>
+    </form>
+
+    <script>
+    // Asignamos el array JSON al input hidden antes de enviar el formulario
+        document.getElementById('guardarForm').addEventListener('submit', function () {
+            document.getElementById('productosInput').value = JSON.stringify(productos);
+        });
+    </script>
 </body>
 </html>
 ");
