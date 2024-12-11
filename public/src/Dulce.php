@@ -145,9 +145,9 @@
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$this->nombre, $this->precio, $this->descripcion, $this->categoria, self::$IVA])) {
-                        echo("Datos guardados correctamente, dulce creado satisfactoriamente <br>");
+                        echo("<script>console.log('Datos guardados correctamente, dulce creado satisfactoriamente')</script>");
                 } else {
-                        echo("Datos no guardados, dulce no creado <br>");
+                        echo("<script>console.log('Datos no guardados, dulce no creado')</script>");
                 }
         }
 
@@ -163,19 +163,19 @@
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute()) {
-                        echo("Los datos de todos los dulces se han leído correctamente <br>");
+                        echo("<script>console.log('Los datos de todos los dulces se han leído correctamente')</script>");
                         
                         // Obtenemos el resultado de la consulta
                         $resultado = $query->fetchAll(PDO::FETCH_ASSOC); // Usamos "PDO::FETCH_ASSOC" para que nos devuelva un array clave valor
                         if ($resultado) {
-                                echo("Los datos de todos los dulces se han leído correctamente <br>");
+                                echo("<script>console.log('Los datos de todos los dulces se han leído correctamente')</script>");
                                 return $resultado;
                         } else {
-                                echo("Los datos de todos los dulces no se han leído <br>");
+                                echo("<script>console.log('Los datos de todos los dulces no se han leído')</script>");
                                 return [];
                         }
                 } else {
-                        echo("Fallo en la consulta de los datos de todos los dulces <br>");
+                        echo("<script>console.log('Fallo en la consulta de los datos de todos los dulces')</script>");
                         return [];
                 }
         }
@@ -193,14 +193,14 @@
                         // Obtenemos el resultado de la consulta
                         $resultado = $query->fetch(PDO::FETCH_ASSOC); // Usamos "PDO::FETCH_ASSOC" para que nos devuelva un array clave valor
                         if ($resultado) {
-                                echo("Los datos de el dulce de id " . $id . " se han leído correctamente <br>");
+                                echo("<script>console.log('Los datos de el dulce de id $id se han leído correctamente')</script>");
                                 return $resultado;
                         } else {
-                                echo("Los datos de el dulce de id " . $id . " no se han leído <br>");
+                                echo("<script>console.log('Los datos de el dulce de id $id no se han leído')</script>");
                                 return [];
                         }
                 } else {
-                        echo("Fallo en la consulta de los datos de el dulce de id " . $id . "<br>");
+                        echo("<script>console.log('Fallo en la consulta de los datos de el dulce de id $id')</script>");
                         return [];
                 }
         } 
@@ -217,9 +217,9 @@
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$this->nombre, $this->precio, $this->descripcion, $this->categoria, self::$IVA, $id])) {
-                        echo("El dulce con id " . $id . " se ha actualizado <br>");
+                        echo("<script>console.log('El dulce con id $id se ha actualizado')</script>");
                 } else {
-                        echo("El dulce con id " . $id . " no se ha actualizado <br>");
+                        echo("<script>console.log('El dulce con id $id no se ha actualizado')</script>");
                 }
         }
         
@@ -235,9 +235,26 @@
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
                 if ($query->execute([$id])) {
-                        echo("El dulce con id " . $id . " se ha eliminado correctamente <br>");
+                        echo("<script>console.log('El dulce con id $id se ha eliminado correctamente')</script>");
                 } else {
-                        echo("El dulce con id " . $id . " no se ha eliminado <br>");
+                        echo("<script>console.log('El dulce con id $id no se ha eliminado')</script>");
+                }
+        }
+
+        // Delete
+        public function deleteAllDulce(): void {
+                // Creamos una instancia de la conexión a la base de datos usando el patrón Singleton
+                $conexionDB = ConexionDB::obtenerInstancia();
+                $conexion = $conexionDB->obtenerConexion();
+
+                // Preparamos la consulta SQL para eliminar un dulce en la base de datos
+                $query = $conexion->prepare("DELETE FROM dulces;");
+
+                // Ejecutamos la consulta para insertar los datos en la base de datos
+                if ($query->execute()) {
+                        echo("<script>console.log('Los dulces se han eliminado correctamente')</script>");
+                } else {
+                        echo("<script>console.log('Los dulces no se han eliminado')</script>");
                 }
         }
     }

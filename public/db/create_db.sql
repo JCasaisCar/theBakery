@@ -29,27 +29,6 @@ CREATE TABLE IF NOT EXISTS usuarios (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Tabla para carritos
-CREATE TABLE IF NOT EXISTS carrito (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    idCliente INT NOT NULL,
-    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (idCliente) REFERENCES usuarios(id)
-);
-
--- Tabla para los productos en el carrito
-CREATE TABLE IF NOT EXISTS carrito_productos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    idCarrito INT NOT NULL,
-    idDulce INT NOT NULL,
-    cantidad INT NOT NULL DEFAULT 1,
-    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (idCarrito) REFERENCES carrito(id) ON DELETE CASCADE,
-    FOREIGN KEY (idDulce) REFERENCES dulces(id) ON DELETE CASCADE
-);
-
-
 
 -- Insertamos los usuarios de prueba
 INSERT INTO usuarios (name, username, password, email, rol)
