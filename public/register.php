@@ -3,6 +3,9 @@
     
     use theBakery\public\src\ConexionDB;
 
+    // Usamos "require_once" para incluir el archivo de conexión a la base de datos
+    require_once("src/ConexionDB.php");
+
     // Verificamos si el formulario ha sido enviado utilizando el método POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -18,8 +21,6 @@
         echo($mail);
         echo($password);
 
-        // Usamos "require_once" para incluir el archivo de conexión a la base de datos
-        require_once("src/ConexionDB.php");
 
         // Creamos una instancia de la conexión a la base de datos usando el patrón Singleton
         $conexionDB = ConexionDB::obtenerInstancia();

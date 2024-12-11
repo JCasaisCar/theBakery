@@ -5,6 +5,8 @@
     use PDO;
 
     require_once("index1.php");
+    // Incluimos el archivo para la conexión a la base de datos
+    require_once("src/ConexionDB.php");
 
     // Comprobamos si la solicitud es del tipo POST, es decir, si se ha enviado el formulario de login
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,10 +16,6 @@
         // Usamos "trim" para quitar los espacios
         $password = trim($_POST['password']);
 
-        
-
-        // Incluimos el archivo para la conexión a la base de datos
-        require_once("src/ConexionDB.php");
 
         // Establecemos una conexión a la base de datos utilizando el patrón Singleton
         $conexionDB = ConexionDB::obtenerInstancia();
@@ -42,7 +40,10 @@
         // Obtenemos el resultado de la consulta
         $resultadoRol = $queryRol->fetch(PDO::FETCH_ASSOC);
 
-        $rol = $resultadoRol['rol'];
+        if ($resultadoRol) {
+            $rol = $resultadoRol['rol'];
+        }
+        
 
 
         // Verificamos si se obtuvo un resultado
@@ -51,19 +52,49 @@
             // Usamos "password_verify" para verificar que la contraseña es correcta
             if (password_verify($password, $resultado['password'])) {
                 echo "<script>
+                    'use strict';
+                    function getCookie(name) {
+                        // Hacemos un array de cookies con el separador '; ' con '.split('; ')'
+                        let cookies = document.cookie.split('; ');
+
+
+                        // Recorremos todas las cookies con el 'for of' para que nos devuelva el contenido de cada una en cada posición de el array
+                        for(let cookie of cookies) {
+                            // Hacemos un array de el nombre y el valor de cada cookie separado por el '=' con '.split('=')'
+                            let cookieArray = cookie.split('=');
+                            let cookieName = cookieArray[0];
+                            let cookieValue = cookieArray[1];
+
+
+                            if(cookieName === name) {
+                                // Si existe la cookie devolvemos su valor
+                                return cookieValue;
+                            } 
+                        }
+
+                        // Si no existe la cookie devolvemos null
+                        return null;
+                    }
+
                     document.cookie = 'username=$username; path=/';
                     document.cookie = 'rol=$rol; path=/';
-                    window.location.href = 'main.php';
+                    if (getCookie('rol')) {
+                        if (getCookie('rol')==='admin') {
+                            window.location.href = 'mainAdmin.php';
+                        } else {
+                            window.location.href = 'mainCliente.php';
+                        } 
+                    }
                 </script>";
                 exit();
             } else {
                 // Si la contraseña es incorrecta, mostramos un mensaje de error y ofrecemos un enlace para volver al login
-                echo "Contraseña incorrecta </br>
+                echo "El usuario existe pero la contraseña es incorrecta </br>
                 <h2><a href='index.php'>Pincha aqui para volver al login</a></h2>";
             }
         } else {
             // Si el usuario no existe en la base de datos, mostramos un mensaje de error y un enlace para volver al login
-            echo "Usuario incorrecto </br>
+            echo "Usuario o contraseña incorrecta </br>
             <h2><a href='005login.php'>Pincha aqui para volver al login</a></h2>";
         }
     }

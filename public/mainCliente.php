@@ -1,8 +1,8 @@
 <?php
     namespace theBakery\public;
 
-    // Usamos la variable "$title" para asignar el título de la página a "index"
-    $title = "index";
+    // Usamos la variable "$title" para asignar el título de la página a "mainCliente"
+    $title = "mainCliente";
 
     require_once("index1.php");
 
