@@ -1,6 +1,8 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public\src;
 
+    // Usamos las rutas de los namespace
     use theBakery\public\util\PasteleriaException;
     use theBakery\public\util\DulceNoCompradoException;
     use theBakery\public\util\DulceNoEncontradoException;
@@ -29,11 +31,11 @@
 
         // Creamos este método público para usar el método privado "incluirCliente(Cliente $cliente)" para incluir un producto
         private function incluirProducto(Dulce $dulce): void {
-            $this->productos[] = $dulce; // Añadir el dulce al array de productos
+            $this->productos[] = $dulce; // Añadimos el dulce al array de productos
         }
 
         public function incluirCliente(Cliente $cliente): void {
-            $this->clientes[] = $cliente; // Añadir el cliente al array de clientes
+            $this->clientes[] = $cliente; // Añadimos el cliente al array de clientes
             echo "Cliente incluido: " . $cliente->getNombre() . "<br>";
         }
 

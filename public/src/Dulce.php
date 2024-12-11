@@ -1,14 +1,17 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public\src;
 
-    // No, los hijos no necesitan implementar el interfaz "Resumible" porque lo heredan de "Dulce", pero deben definir el método "muestraResumen()" al ser "Dulce" una clase abstracta
+    // Usamos "require_once" para incluir el archivo de resumible
     require_once("Resumible.php");
 
     // Usamos "require_once" para incluir el archivo de conexión a la base de datos
     require_once("ConexionDB.php");
 
+    // Usamos el "PDO"
     use PDO;
     // Al hacer la clase "Dulce" abstracta evita instancias directas, obligamos a las hijas a implementar métodos clave y mejoramos la claridad del diseño
+    // Usamos "implements" para implementar una interfaz
     abstract class Dulce implements Resumible {
         private string $nombre;
         private float $precio;

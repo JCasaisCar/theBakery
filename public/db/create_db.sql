@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
--- Tabla de pedidos
+-- Creamos una tabla para pedidos
 CREATE TABLE pedidos (
     idPedido INT AUTO_INCREMENT PRIMARY KEY,  -- Identificador único del pedido
     idCliente INT NOT NULL,                   -- Relación con usuarios
@@ -49,7 +48,6 @@ CREATE TABLE detalles_pedido (
     subtotal DECIMAL(10, 2) NOT NULL,         -- Subtotal (cantidad * precioUnitario)
     FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido) -- Relación con pedidos
 );
-
 
 
 -- Insertamos los usuarios de prueba

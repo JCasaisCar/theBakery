@@ -1,6 +1,8 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public\src;
 
+    // Usamos las rutas de los namespace y el "PDO"
     use theBakery\public\util\PasteleriaException;
     use theBakery\public\util\DulceNoCompradoException;
     use theBakery\public\util\DulceNoEncontradoException;
@@ -22,7 +24,6 @@
         private array $dulcesComprados;
         private array $comentarios;
 
-        // Arreglar lo de los atributos que esta liado
         public function __construct(string $nombre, string $usuario, string $password, string $email, int $numPedidosEfectuados = 0) {
             $this->nombre = $nombre;
             $this->usuario = $usuario;
@@ -181,7 +182,7 @@
             $conexionDB = ConexionDB::obtenerInstancia();
             $conexion = $conexionDB->obtenerConexion();
 
-            // Preparamos la consulta SQL para insertar un nuevo dulce en la base de datos
+            // Preparamos la consulta SQL para insertar un nuevo cliente en la base de datos
             $query = $conexion->prepare("INSERT INTO usuarios (name, username, password, email) VALUES
             (?, ?, ?, ?, ?);"); // Ponemos "?" para evitar la inyección SQL
 
@@ -200,7 +201,7 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para seleccionar los dulces en la base de datos
+                // Preparamos la consulta SQL para seleccionar los cliente en la base de datos
                 $query = $conexion->prepare("SELECT * FROM usuarios WHERE rol='cliente';");
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
@@ -227,7 +228,7 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para seleccionar un dulce por su id en la base de datos
+                // Preparamos la consulta SQL para seleccionar un cliente por su id en la base de datos
                 $query = $conexion->prepare("SELECT * FROM usuarios WHERE id=? and rol='cliente';"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
@@ -254,7 +255,7 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para actualizar un dulce en la base de datos
+                // Preparamos la consulta SQL para actualizar un cliente en la base de datos
                 $query = $conexion->prepare("UPDATE usuarios SET name=?, username=?, password=?, email=? WHERE id = ? and rol='cliente';"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos
@@ -272,7 +273,7 @@
                 $conexionDB = ConexionDB::obtenerInstancia();
                 $conexion = $conexionDB->obtenerConexion();
 
-                // Preparamos la consulta SQL para eliminar un dulce en la base de datos
+                // Preparamos la consulta SQL para eliminar un cliente en la base de datos
                 $query = $conexion->prepare("DELETE FROM usuarios WHERE id = ? and rol='cliente';"); // Ponemos "?" para evitar la inyección SQL
 
                 // Ejecutamos la consulta para insertar los datos en la base de datos

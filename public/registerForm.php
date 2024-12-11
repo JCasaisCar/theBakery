@@ -1,15 +1,16 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public;
 
-    // Usamos la variable "$title" para asignar el título de la página a "005registro"
+    // Usamos la variable "$title" para asignar el título de la página a "registerForm"
     $title = "registerForm";
 
-    // Usamos "require_once" para incluir el archivo "index1.php"
+    // Incluimos el archivo para la cabecera de el "HTML"
     require_once("index1.php");
 ?>
 
 <div class="container my-5">
-    <!-- Creamos un formulario HTML que enviará los datos a "006nuevoUsuario.php" utilizando el método POST -->
+    <!-- Creamos un formulario HTML que enviará los datos a "register.php" utilizando el método POST -->
     <form action="register.php" method="POST" class="w-50 mx-auto p-4 border rounded shadow-sm">
         
         <!-- Usamos un contenedor para el campo de entrada del nombre -->
@@ -24,7 +25,7 @@
         <div class="mb-3">
             <!-- Usamos un "label" para describir el campo del nombre de usuario -->
             <label for="username" class="form-label">Nombre de Usuario</label>
-            <!-- Usamos un campo de entrada de tipo 'text' para el nombre de usuario con el atributo 'name' igual a 'username' -->
+            <!-- Usamos un campo de entrada de tipo 'text' para el nombre de usuario con el atributo 'username' igual a 'username' -->
             <input type="text" class="form-control" id="username" name="username" required>
         </div>
 
@@ -32,7 +33,7 @@
         <div class="mb-3">
             <!-- Usamos un "label" para describir el campo del correo -->
             <label for="mail" class="form-label">Correo</label>
-            <!-- Usamos un campo de entrada de tipo 'email' para el correo con el atributo 'name' igual a 'mail' -->
+            <!-- Usamos un campo de entrada de tipo 'email' para el correo con el atributo 'mail' igual a 'mail' -->
             <input type="email" class="form-control" id="mail" name="mail" required>
         </div>
 
@@ -40,7 +41,7 @@
         <div class="mb-3">
             <!-- Usamos un "label" para describir el campo de la contraseña -->
             <label for="password" class="form-label">Contraseña</label>
-            <!-- Usamos un campo de entrada de tipo 'password' para la contraseña con el atributo 'name' igual a 'password' -->
+            <!-- Usamos un campo de entrada de tipo 'password' para la contraseña con el atributo 'password' igual a 'password' -->
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
 
@@ -56,6 +57,6 @@
 </div>
 
 <?php
-    // Usamos "require_once" para incluir el archivo "index2.php"
+    // Incluimos el archivo para el pie de página de el "HTML"
     require_once("index2.php");
 ?>

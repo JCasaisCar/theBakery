@@ -1,4 +1,8 @@
 <?php
+    // Configuramos el namespace
+    namespace theBakery\public\testing;
+
+    // Usamos las rutas de los namespace
     use theBakery\public\src\Bollo;
     use theBakery\public\src\Tarta;
     use theBakery\public\src\Chocolate;

@@ -1,9 +1,11 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public\src;
 
     // Usamos "require_once("archivo.extensión")" para incluir un archivo
     require_once("Dulce.php");
 
+    // Usamos "extends" para cojer de padre a una clase
     class Chocolate extends Dulce {
         private float $porcentajeCacao;
         private float $peso;
@@ -15,6 +17,7 @@
             $this->peso = $peso;
         }
 
+        // Usamos "parent::muestraResumen()" para usar el método del padre
         public function muestraResumen(): string {
             return parent::muestraResumen() . ", Porcentaje de Cacao: " . $this->porcentajeCacao . "%, Peso: " . $this->peso . "<br>";
         }

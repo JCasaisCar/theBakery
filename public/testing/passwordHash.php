@@ -1,4 +1,7 @@
 <?php
+    // Configuramos el namespace
+    namespace theBakery\public\testing;
+
     // Para sacar el "hash" las contraseñas por defecto en la BBDD 
     $hashedAdmin = password_hash("admin", PASSWORD_DEFAULT);
     echo("Hashed admin: " . $hashedAdmin . "<br>");

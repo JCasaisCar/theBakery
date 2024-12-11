@@ -1,9 +1,10 @@
 <?php
+    // Configuramos el namespace
     namespace theBakery\public;
 
+    // Usamos las rutas de el namespace y el "PDO"
     use theBakery\public\src\ConexionDB;
     use PDO;
-
     use theBakery\public\src\Bollo;
     use theBakery\public\src\Tarta;
     use theBakery\public\src\Chocolate;
@@ -13,24 +14,27 @@
     require_once("src/Tarta.php");
     require_once("src/Chocolate.php");
 
-    // Bollo
+    // Añadimos un bollo
     $nombreBollo = "Croissant";
+    // Usamos "str_replace" para quitar los espacios
     $nombreBolloSinEspacios = str_replace(" ", "", $nombreBollo);
     $bollo = new Bollo($nombreBolloSinEspacios, 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
-    $bollo->deleteAllDulce(); // Eliminar todos los dulces
-    $bollo->createDulce(); // Probamos el método "create"
+    $bollo->deleteAllDulce(); // Eliminar todos los dulces antes de añadir lo primero para que no se repitan
+    $bollo->createDulce();
 
-    // Chocolate
+    // Añadimos un chocolate
     $nombreChocolate = "Barra De Chocolate";
+    // Usamos "str_replace" para quitar los espacios
     $nombreChocolateSinEspacios = str_replace(" ", "", $nombreChocolate);
     $chocolate = new Chocolate($nombreChocolateSinEspacios, 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
-    $chocolate->createDulce(); // Probamos el método "create"
+    $chocolate->createDulce(); 
 
-    // Tarta
+    // Añadimos una tarta
     $nombreTarta = "Tarta De Queso";
+    // Usamos "str_replace" para quitar los espacios
     $nombreTartaSinEspacios = str_replace(" ", "", $nombreTarta);
     $tarta = new Tarta($nombreTartaSinEspacios, 15.00, "Deliciosa tarta de queso al horno", "Tartas", ["chocolate", "galleta"], 2, 4, 20);
-    $tarta->createDulce(); // Probamos el método "create"
+    $tarta->createDulce(); 
 
     // Con "readAll" sacamos la lista de dulces
     $arrayDulces = $bollo->readAllDulce();
@@ -38,12 +42,14 @@
     // Usamos la variable "$title" para asignar el título de la página a "mainCliente"
     $title = "mainCliente";
 
+    // Incluimos el archivo para la cabecera de el "HTML"
     require_once("index1.php");
     // Incluimos el archivo para la conexión a la base de datos
     require_once("src/ConexionDB.php");
 
     $username = "";
     
+    // Si existe la cookie la guardamos y ponemos un texto de bienvenida, sino ponemos un texto de que no existe
     if (isset($_COOKIE['username'])) {
         $username = $_COOKIE['username'];
         echo("<h1 class='text-center text-primary'>¡¡Bienvenid@ $username!!</h1>");
@@ -55,17 +61,18 @@
     $conexionDB = ConexionDB::obtenerInstancia();
     $conexion = $conexionDB->obtenerConexion();
 
-   // Preparamos una consulta SQL para seleccionar el rol de un nombre de usuario en la base de datos
+   // Preparamos una consulta SQL para seleccionar el id de un nombre de usuario en la base de datos
    $query = $conexion->prepare("SELECT id FROM usuarios WHERE username = ?");
 
+   // Si el usuario no esta vacío ejecutamos la consulta
    if ($username !== "") {
-        // Ejecutamos la consulta
         $query->execute([$username]);
    }
 
-   // Obtenemos el resultado de la consulta
+   // Obtenemos el resultado de la consulta con "PDO::FETCH_ASSOC" en el resultado para que nos arroje un array con clave valor, la clave es el nombre de la columna en la base de datos
    $resultado = $query->fetch(PDO::FETCH_ASSOC);
 
+   // Si el resultado no es nulo hacemos la cookie con "document.cookie"
    if ($resultado) {
        $idCliente = $resultado['id'];
 
@@ -75,14 +82,14 @@
    }
 
    // Botón de carrito
-   echo '<div class="d-flex justify-content-end p-3">
+   echo ('<div class="d-flex justify-content-end p-3">
    <a href="carrito.php" class="btn btn-primary">
        <i class="bi bi-cart"></i> Ir al Carrito
    </a>
-    </div>';
+    </div>');
 
-   // Mostrar tabla de productos
-   echo '<div class="container mt-4">
+   // Para mostrar la tabla de productos
+   echo ('<div class="container mt-4">
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -93,35 +100,36 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>';
-
+        <tbody>');
+    // Hacemos un "foreach" para recorrer el resultado de "arrayDulces"   
     foreach ($arrayDulces as $dulce) {
-    echo '<tr>
-            <td>' . htmlspecialchars($dulce['categoria']) . '</td>
-            <td>' . htmlspecialchars($dulce['nombre']) . '</td>
-            <td>' . number_format($dulce['precio'], 2) . ' €</td>
-            <td>' . htmlspecialchars($dulce['descripcion']) . '</td>
-            <td>
-                <button class="btn btn-success" onclick="agregarAlCarrito(\'' . htmlspecialchars($dulce['nombre']) . '\')">
-                    Añadir al carrito
-                </button>
-            </td>
-        </tr>';
+        echo ('<tr>
+                <td>' . htmlspecialchars($dulce['categoria']) . '</td>
+                <td>' . htmlspecialchars($dulce['nombre']) . '</td>
+                <td>' . number_format($dulce['precio'], 2) . ' €</td>
+                <td>' . htmlspecialchars($dulce['descripcion']) . '</td>
+                <td>
+                    <button class="btn btn-success" onclick="agregarAlCarrito(\'' . htmlspecialchars($dulce['nombre']) . '\')">
+                        Añadir al carrito
+                    </button>
+                </td>
+            </tr>');
     }
 
-    echo '    </tbody>
+    echo ('    </tbody>
     </table>
-    </div>';
+    </div>');
 
     echo("<h2 class='text-center'><button class='btn btn-danger' onclick='cerrarSesion()'>Cerrar sesión</button></h2>");
 
+    // Incluimos el archivo para el pie de página de el "HTML"
     require_once("index2.php");
 ?>
 
 
 <script>
+    // Hacemos esta función para usarla para el botón de cerrar sesión
     function cerrarSesion() {
-        
         // Obtenemos todas las cookies
         let cookies = document.cookie.split("; ");
         
@@ -138,6 +146,7 @@
         window.location.href = 'index.php';
     }
 
+    // Hacemos esta función para sacar el valor de una cookie
     function getCookie(name) {
         // Hacemos un array de cookies con el separador "; " con ".split("; ")"
         let cookies = document.cookie.split("; ");
@@ -159,8 +168,9 @@
         return null;
     }
 
+    // Hacemos esta función para agregar un artículo al carrito
     function agregarAlCarrito(producto) {
-        // Obtenemos el valor actual de la cookie para el producto específico
+        // Obtenemos el valor actual de la cookie para el producto específico, usamos el más para convertir el string a número
         let cantidad = +getCookie(producto);
         
         if (cantidad) {
