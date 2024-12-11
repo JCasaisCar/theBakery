@@ -22,7 +22,7 @@ $conexionDB = ConexionDB::obtenerInstancia();
 $conexion = $conexionDB->obtenerConexion();
 
 // Listado de clientes
-$queryClientes = $conexion->prepare("SELECT id, name, email FROM usuarios WHERE rol = 'cliente'");
+$queryClientes = $conexion->prepare("SELECT id, name, username, email FROM usuarios WHERE rol = 'cliente'");
 $queryClientes->execute();
 $clientes = $queryClientes->fetchAll(PDO::FETCH_ASSOC);
 
@@ -32,6 +32,7 @@ echo "<table class='table table-striped'>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Usuario</th>  <!-- Nueva columna para el usuario -->
                 <th>Email</th>
                 <th>Pedidos</th>
             </tr>
@@ -47,6 +48,7 @@ foreach ($clientes as $cliente) {
     echo "<tr>
             <td>{$cliente['id']}</td>
             <td>{$cliente['name']}</td>
+            <td>{$cliente['username']}</td>  <!-- Mostrar el nombre de usuario -->
             <td>{$cliente['email']}</td>
             <td>";
     
