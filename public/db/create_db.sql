@@ -29,16 +29,24 @@ CREATE TABLE IF NOT EXISTS usuarios (
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Creamos una tabla para clientes
-CREATE TABLE IF NOT EXISTS clientes (
+-- Tabla para carritos
+CREATE TABLE IF NOT EXISTS carrito (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    telefono VARCHAR(15),
-    user VARCHAR(50), -- Usuario asociado al cliente
-    password VARCHAR(255), -- Contraseña hasheada
+    idCliente INT NOT NULL,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (idCliente) REFERENCES usuarios(id)
+);
+
+-- Tabla para los productos en el carrito
+CREATE TABLE IF NOT EXISTS carrito_productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    idCarrito INT NOT NULL,
+    idDulce INT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 1,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (idCarrito) REFERENCES carrito(id) ON DELETE CASCADE,
+    FOREIGN KEY (idDulce) REFERENCES dulces(id) ON DELETE CASCADE
 );
 
 
@@ -48,8 +56,3 @@ INSERT INTO usuarios (name, username, password, email, rol)
 VALUES
 ("Administrador", "admin", "$2y$10$5Po6LH4.6Nrv1fAnVXeS3e.UVCE8pEuorKEhquhkdNmcITWWdex.O", "admin@ilerna.com", "admin"), -- Usamos "SHA2("admin", 256)" para generar un hash SHA-256 de la cadena "admin"
 ("Usuario Cliente", "usuario", "$2y$10$l.xuOnbMVdN4SyaR1cVs5eGXr692ZgtMEtHsSR2FkUxvYeN6gnXkC", "cliente@ilerna.com", "cliente");
-
--- Insertamos los datos de prueba para clientes
-INSERT INTO clientes (nombre, email, telefono, user, password)
-VALUES
-("Juan Pérez", "juan@ilerna.com", "123456789", "juan", SHA2("juanpass", 256));
