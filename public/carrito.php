@@ -43,6 +43,7 @@ $productos = [];
 if (isset($_COOKIE)) {
     // Recorrer todas las cookies
     foreach ($_COOKIE as $nombre => $cantidad) {
+        echo("<script>console.log('foreach $nombre');</script>");
         // Aquí puedes hacer la consulta a la base de datos para obtener los otros valores
         // como 'categoria', 'precioSinIVA', 'precioConIVA', 'totalSinIVA' y 'totalConIVA'.
         if ($nombre!="idCliente" && $nombre!="rol" && $nombre!="username") {
@@ -75,8 +76,6 @@ if (isset($_COOKIE)) {
     }
 }
 
-// Imprimir el contenido de $productos para depuración
-var_dump($productos);
 
 echo("
 <!DOCTYPE html>

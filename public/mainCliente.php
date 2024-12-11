@@ -16,18 +16,24 @@
 
 
     // Bollo
-    $bollo = new Bollo("Croissant", 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
+    $nombreBollo = "Croissant";
+    $nombreBolloSinEspacios = str_replace(" ", "", $nombreBollo);
+    $bollo = new Bollo($nombreBolloSinEspacios, 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
     $bollo->deleteAllDulce(); // Eliminar todos los dulces
     $bollo->createDulce(); // Probamos el método "create"
 
 
     // Chocolate
-    $chocolate = new Chocolate("Barra de Chocolate", 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
+    $nombreChocolate = "Barra De Chocolate";
+    $nombreChocolateSinEspacios = str_replace(" ", "", $nombreChocolate);
+    $chocolate = new Chocolate($nombreChocolateSinEspacios, 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
     $chocolate->createDulce(); // Probamos el método "create"
 
 
     // Tarta
-    $tarta = new Tarta("Tarta de Queso", 15.00, "Deliciosa tarta de queso al horno", "Tartas", ["chocolate", "galleta"], 2, 4, 20);
+    $nombreTarta = "Tarta De Queso";
+    $nombreTartaSinEspacios = str_replace(" ", "", $nombreTarta);
+    $tarta = new Tarta($nombreTartaSinEspacios, 15.00, "Deliciosa tarta de queso al horno", "Tartas", ["chocolate", "galleta"], 2, 4, 20);
     $tarta->createDulce(); // Probamos el método "create"
 
     // Con "readAll" sacamos la lista de dulces
