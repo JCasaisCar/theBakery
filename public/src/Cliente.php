@@ -2,19 +2,15 @@
     // Configuramos el namespace
     namespace theBakery\public\src;
 
-    // Usamos las rutas de los namespace y el "PDO"
+    // Usamos las rutas de los namespace, el "PDO" y el "PDOException"
     use theBakery\public\util\PasteleriaException;
     use theBakery\public\util\DulceNoCompradoException;
     use theBakery\public\util\DulceNoEncontradoException;
     use theBakery\public\util\ClienteNoEncontradoException;
     use PDO;
+    use PDOException;
 
-    // Para incluir las excepciones
-    require_once("../util/PasteleriaException.php");
-    require_once("../util/DulceNoCompradoException.php");
-    require_once("../util/DulceNoEncontradoException.php");
-    require_once("../util/ClienteNoEncontradoException.php");
-
+    
     class Cliente {
         private string $nombre;
         private string $usuario;
@@ -281,6 +277,42 @@
                         echo("<script>console.log('El cliente con id $id se ha eliminado correctamente')</script> <br>");
                 } else {
                         echo("<script>console.log('El cliente con id $id no se ha eliminado')</script> <br>");
+                }
+        }
+
+
+ 
+        public function getPedidos(int $id): array {
+                // Crear una instancia de la conexión a la base de datos
+                $conexionDB = ConexionDB::obtenerInstancia();
+                $conexion = $conexionDB->obtenerConexion();
+            
+                try {
+                    // Consulta SQL para obtener los detalles de los productos de todos los pedidos realizados por el cliente
+                    $query = $conexion->prepare(
+                        "SELECT dp.nombreProducto, dp.cantidad, dp.precioUnitario, dp.subtotal, p.fechaPedido
+                         FROM detalles_pedido dp
+                         INNER JOIN pedidos p ON dp.idPedido = p.idPedido
+                         WHERE p.idCliente = ?"
+                    );
+            
+                    // Ejecutamos la consulta
+                    $query->execute([$id]);
+            
+                    // Obtenemos los resultados como un array asociativo
+                    $articulos = $query->fetchAll(PDO::FETCH_ASSOC);
+            
+                    if ($articulos) {
+                        echo "<script>console.log('Los artículos del cliente con ID $id se han leído correctamente')</script>";
+                        return $articulos;
+                    } else {
+                        echo "<script>console.log('No se encontraron artículos para el cliente con ID $id')</script>";
+                        return [];
+                    }
+                } catch (PDOException $e) {
+                    // Manejo de errores de la base de datos
+                    echo "<script>console.log('Error en la consulta: " . $e->getMessage() . "')</script>";
+                    return [];
                 }
         }
     }

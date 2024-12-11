@@ -8,11 +8,13 @@
     use theBakery\public\src\Bollo;
     use theBakery\public\src\Tarta;
     use theBakery\public\src\Chocolate;
+    use theBakery\public\src\Cliente;
 
     // Incluimos los archivos necesarios
     require_once("src/Bollo.php");
     require_once("src/Tarta.php");
     require_once("src/Chocolate.php");
+    require_once("src/Cliente.php");
 
     // Añadimos un bollo
     $nombreBollo = "Croissant";
@@ -95,7 +97,7 @@
             <tr>
                 <th>Categoría</th>
                 <th>Nombre</th>
-                <th>Precio</th>
+                <th>PrecioSinIVA</th>
                 <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
@@ -119,6 +121,42 @@
     echo ('    </tbody>
     </table>
     </div>');
+
+    // Obtener los pedidos del cliente
+    $cliente = new Cliente($username, "", "", ""); // Creamos una instancia de Cliente
+    $pedidos = $cliente->getPedidos($idCliente); // Llamamos a la función getPedidos
+
+    // Si el cliente tiene pedidos hacemos una tabla con los articulos que ha pedido
+    if (!empty($pedidos)) {
+        echo ('<div class="container mt-4">
+        <h3>Mis Pedidos</h3>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>PrecioConIVA</th>
+                    <th>Subtotal</th>
+                    <th>Fecha del Pedido</th>
+                </tr>
+            </thead>
+            <tbody>');
+        foreach ($pedidos as $pedido) {
+            echo ('<tr>
+                    <td>' . htmlspecialchars($pedido['nombreProducto']) . '</td>
+                    <td>' . htmlspecialchars($pedido['cantidad']) . '</td>
+                    <td>' . htmlspecialchars($pedido['precioUnitario']) . '</td>
+                    <td>' . htmlspecialchars($pedido['subtotal']) . '</td>
+                    <td>' . htmlspecialchars($pedido['fechaPedido']) . '</td>
+                </tr>');
+        }
+        echo ('</tbody>
+        </table>
+        </div>');
+    }
+
+
+
 
     echo("<h2 class='text-center'><button class='btn btn-danger' onclick='cerrarSesion()'>Cerrar sesión</button></h2>");
 

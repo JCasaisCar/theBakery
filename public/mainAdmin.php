@@ -92,7 +92,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>PrecioSinIVA</th>
                     <th>Categoría</th>
                 </tr>
             </thead>
