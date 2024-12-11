@@ -12,8 +12,6 @@
     require_once("src/Bollo.php");
     require_once("src/Tarta.php");
     require_once("src/Chocolate.php");
-    
-
 
     // Bollo
     $nombreBollo = "Croissant";
@@ -22,13 +20,11 @@
     $bollo->deleteAllDulce(); // Eliminar todos los dulces
     $bollo->createDulce(); // Probamos el método "create"
 
-
     // Chocolate
     $nombreChocolate = "Barra De Chocolate";
     $nombreChocolateSinEspacios = str_replace(" ", "", $nombreChocolate);
     $chocolate = new Chocolate($nombreChocolateSinEspacios, 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
     $chocolate->createDulce(); // Probamos el método "create"
-
 
     // Tarta
     $nombreTarta = "Tarta De Queso";
@@ -39,9 +35,6 @@
     // Con "readAll" sacamos la lista de dulces
     $arrayDulces = $bollo->readAllDulce();
     
-
-
-
     // Usamos la variable "$title" para asignar el título de la página a "mainCliente"
     $title = "mainCliente";
 
@@ -53,9 +46,9 @@
     
     if (isset($_COOKIE['username'])) {
         $username = $_COOKIE['username'];
-        echo("<h1>¡¡Bienvenid@ $username!!</h1>");
+        echo("<h1 class='text-center my-4'>¡¡Bienvenid@ $username!!</h1>");
     } else {
-        echo("No existe la cookie");
+        echo("<p class='text-center text-danger'>No existe la cookie</p>");
     }
 
     // Establecemos una conexión a la base de datos utilizando el patrón Singleton
@@ -69,7 +62,6 @@
         // Ejecutamos la consulta
         $query->execute([$username]);
    }
-   
 
    // Obtenemos el resultado de la consulta
    $resultado = $query->fetch(PDO::FETCH_ASSOC);
@@ -82,7 +74,6 @@
         </script>");
    }
 
-
    // Botón de carrito
    echo '<div class="d-flex justify-content-end p-3">
    <a href="carrito.php" class="btn btn-primary">
@@ -90,8 +81,8 @@
    </a>
     </div>';
 
-    // Mostrar tabla de productos
-    echo '<div class="container mt-4">
+   // Mostrar tabla de productos
+   echo '<div class="container mt-4">
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -122,9 +113,7 @@
     </table>
     </div>';
 
-
-
-    echo("<h2><a onclick='cerrarSesion()'>Pincha aqui para cerrar la sesión</a></h2>");
+    echo("<h2 class='text-center'><button class='btn btn-danger' onclick='cerrarSesion()'>Cerrar sesión</button></h2>");
 
     require_once("index2.php");
 ?>
@@ -145,7 +134,6 @@
             document.cookie = cookieName + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         }
 
-
         // Redirigimos al usuario a la página de login
         window.location.href = 'index.php';
     }
@@ -153,17 +141,15 @@
     function getCookie(name) {
         // Hacemos un array de cookies con el separador "; " con ".split("; ")"
         let cookies = document.cookie.split("; ");
-
-
-        // Recorremos todas las cookies con el "for of" para que nos devuelva el contenido de cada una en cada posición de el array
-        for(let cookie of cookies) {
+        
+        // Recorremos todas las cookies con el "for of" para que nos devuelva el contenido de cada una en cada posición del array
+        for (let cookie of cookies) {
             // Hacemos un array de el nombre y el valor de cada cookie separado por el "=" con ".split("=")"
             let cookieArray = cookie.split("=");
             let cookieName = cookieArray[0];
             let cookieValue = cookieArray[1];
 
-            
-            if(cookieName === name) {
+            if (cookieName === name) {
                 // Si existe la cookie devolvemos su valor
                 return cookieValue;
             } 
