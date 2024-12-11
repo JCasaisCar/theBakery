@@ -13,5 +13,19 @@
         echo("No existe la cookie");
     }
 
+    echo("<h2><a onclick='cerrarSesion()'>Pincha aqui para cerrar la sesión</a></h2>");
+
     require_once("index2.php");
 ?>
+
+
+<script>
+    function cerrarSesion() {
+        // Eliminamos las cookies de sesión
+        document.cookie = 'username=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+        document.cookie = 'rol=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+
+        // Redirigimos al usuario a la página de login
+        window.location.href = 'index.php';
+    }
+</script>
