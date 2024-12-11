@@ -46,7 +46,7 @@
     
     if (isset($_COOKIE['username'])) {
         $username = $_COOKIE['username'];
-        echo("<h1 class='text-center my-4'>¡¡Bienvenid@ $username!!</h1>");
+        echo("<h1 class='text-center text-primary'>¡¡Bienvenid@ $username!!</h1>");
     } else {
         echo("<p class='text-center text-danger'>No existe la cookie</p>");
     }

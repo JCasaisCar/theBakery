@@ -37,22 +37,16 @@ function readDulce($datoAObtener, $nombreCookie) {
 // Array para almacenar los productos
 $productos = [];
 
-
-//Falla aqui hace el primero pero los otros no los hace
 // Verificar si existen cookies
 if (isset($_COOKIE)) {
     // Recorrer todas las cookies
     foreach ($_COOKIE as $nombre => $cantidad) {
         echo("<script>console.log('foreach $nombre');</script>");
-        // Aquí puedes hacer la consulta a la base de datos para obtener los otros valores
-        // como 'categoria', 'precioSinIVA', 'precioConIVA', 'totalSinIVA' y 'totalConIVA'.
         if ($nombre!="idCliente" && $nombre!="rol" && $nombre!="username") {
             $cantidad = is_numeric($cantidad) ? (float)$cantidad : 0;
 
-            
             $precioSinIVA = (float)readDulce("precio", $nombre);  // Convertir a float
             $iva = (float)readDulce("iva", $nombre);  // Convertir a float
-
 
             // Aquí se simulan los valores para la demostración
             $categoria = readDulce("categoria", $nombre);  // Simulación
@@ -60,7 +54,6 @@ if (isset($_COOKIE)) {
             $precioConIVA = ($precioSinIVA * $iva) / 100 + $precioSinIVA;
             $totalSinIVA = $cantidad * $precioSinIVA;
             $totalConIVA = $cantidad * $precioConIVA;
-
 
             // Agregar el producto al array
             $productos[] = [
@@ -87,7 +80,6 @@ if (isset($_COOKIE)) {
     ];       
 }
 
-
 echo("
 <!DOCTYPE html>
 <html lang='es'>
@@ -96,6 +88,7 @@ echo("
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Tabla Dinámica</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
 </head>
 <body>
 
@@ -114,8 +107,18 @@ echo("
 
      <form id='guardarForm' method='POST' action='guardarDatosCarritoBBDD.php'>
             <input type='hidden' name='productos' id='productosInput'>
-            <button type='submit' class='btn btn-primary mt-3'>Guardar en la Base de Datos</button>
-    </form>
+            <button type='submit' class='btn btn-success btn-lg btn-block mt-4'>
+                <i class='fas fa-save'></i> Guardar en la Base de Datos
+            </button>
+        </form>
+
+        <!-- Botón de ir atrás -->
+        <div class='d-flex justify-content-end mt-4'>
+            <a href='mainCliente.php' class='btn btn-warning'>
+                <i class='fas fa-arrow-left'></i> Ir atrás
+            </a>
+        </div>
+    </div>
 
     <script>
     // Asignamos el array JSON al input hidden antes de enviar el formulario

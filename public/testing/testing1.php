@@ -39,8 +39,8 @@
     );
 
     // Creamos algunos clientes
-    $cliente1 = new Cliente("Juan Pérez", "juanp", "1234");
-    $cliente2 = new Cliente("Ana López", "anal", "5678");
+    $cliente1 = new Cliente("Juan Pérez", "juanp", "1234", "juan@juan.com");
+    $cliente2 = new Cliente("Ana López", "anal", "5678", "ana@ana.com");
 
     // Creamos la pastelería
     $pasteleria = new Pasteleria();
