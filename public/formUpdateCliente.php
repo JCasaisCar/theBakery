@@ -41,8 +41,8 @@ require_once("index1.php");
                 <input type="email" class="form-control" id="mail" name="mail" value="<?= $cliente['email'] ?>" required>
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Nueva Contraseña (opcional)</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <label for="password" class="form-label">Nueva Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
         </form>
