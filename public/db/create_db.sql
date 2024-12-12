@@ -66,5 +66,5 @@ VALUES ('TartaDeQueso', 15.00, 'Deliciosa tarta de queso al horno', 'Tartas', 21
 -- Insertamos los usuarios de prueba
 INSERT INTO usuarios (name, username, password, email, rol)
 VALUES
-("Administrador", "admin", "$2y$10$5Po6LH4.6Nrv1fAnVXeS3e.UVCE8pEuorKEhquhkdNmcITWWdex.O", "admin@ilerna.com", "admin"), -- Usamos "SHA2("admin", 256)" para generar un hash SHA-256 de la cadena "admin"
+("Administrador", "admin", "$2y$10$5Po6LH4.6Nrv1fAnVXeS3e.UVCE8pEuorKEhquhkdNmcITWWdex.O", "admin@ilerna.com", "admin"),
 ("UsuarioCliente", "usuario", "$2y$10$l.xuOnbMVdN4SyaR1cVs5eGXr692ZgtMEtHsSR2FkUxvYeN6gnXkC", "cliente@ilerna.com", "cliente");

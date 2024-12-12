@@ -20,8 +20,11 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
             crossorigin="anonymous"></script>
 
-    <!-- Script de Validaciones de formularios -->
+    <!-- Script de Validaciones de formularios para archivos de la misma ruta -->
     <script src="js/validarFormulario.js" defer></script>
+
+    <!-- Script de Validaciones de formularios para archivos de otra ruta -->
+    <script src="../js/validarFormulario.js" defer></script>
     
     <!-- Título de la página, que es definido dinámicamente desde PHP -->
     <title><?php echo $title; ?></title>
