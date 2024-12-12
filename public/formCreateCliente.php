@@ -9,7 +9,8 @@
 
     <div class="container my-5">
         <h1 class="text-center">Crear Cliente</h1>
-        <form action="createCliente.php" method="POST">
+        <!-- Usamos "onsubmit" para que cuando le demos al boton de "submit" antes de enviar los datos los valide con la función que hemos definido en js -->
+        <form action="createCliente.php" method="POST" onsubmit="return validarFormulario(this)">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name" required>
@@ -19,8 +20,8 @@
                 <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <label for="mail" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="mail" name="mail" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>

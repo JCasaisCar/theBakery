@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $username = $_POST['username'];
-    $email = $_POST['email'];
+    $mail = $_POST['mail'];
     $password = !empty($_POST['password']) ? password_hash($_POST['password'], PASSWORD_DEFAULT) : null;
 
     // Conexión a la base de datos
@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Actualizar cliente
     if ($password) {
         $query = $conexion->prepare("UPDATE usuarios SET name = ?, username = ?, email = ?, password = ? WHERE id = ?");
-        $query->execute([$name, $username, $email, $password, $id]);
+        $query->execute([$name, $username, $mail, $password, $id]);
     } else {
         $query = $conexion->prepare("UPDATE usuarios SET name = ?, username = ?, email = ? WHERE id = ?");
-        $query->execute([$name, $username, $email, $id]);
+        $query->execute([$name, $username, $mail, $id]);
     }
 
     header('Location: mainAdmin.php'); // Redirigir al listado

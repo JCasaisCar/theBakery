@@ -10,7 +10,7 @@ require_once("src/ConexionDB.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $username = $_POST['username'];
-    $email = $_POST['email'];
+    $mail = $_POST['mail'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash de la contraseña
 
     // Conexión a la base de datos
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Insertar cliente
     $query = $conexion->prepare("INSERT INTO usuarios (name, username, email, password, rol) VALUES (?, ?, ?, ?, 'cliente')");
-    if ($query->execute([$name, $username, $email, $password])) {
+    if ($query->execute([$name, $username, $mail, $password])) {
         header('Location: mainAdmin.php'); // Redirigir al listado
         exit;
     } else {
