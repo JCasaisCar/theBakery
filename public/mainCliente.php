@@ -66,7 +66,7 @@
 
    // Botón de carrito
    echo ('<div class="d-flex justify-content-end p-3">
-   <a href="carrito.php" class="btn btn-primary">
+   <a href="src/carrito.php" class="btn btn-primary">
        <i class="bi bi-cart"></i> Ir al Carrito
    </a>
     </div>');

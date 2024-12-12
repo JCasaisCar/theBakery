@@ -1,13 +1,12 @@
 <?php
     // Configuramos el namespace
-    namespace theBakery\public;
+    namespace theBakery\public\src;
 
-    // Usamos una ruta de el namespace y el "PDO"
+    // Usamos el "PDO"
     use PDO;
-    use theBakery\public\src\ConexionDB;
 
     // Incluimos el archivo para la conexión a la base de datos
-    require_once("src/ConexionDB.php");
+    require_once("ConexionDB.php");
 
     // Hacemos esta función para leer un elemento de un dulce en la base de datos
     function readDulce($datoAObtener, $nombreCookie) {
@@ -114,7 +113,7 @@
             console.log(productos);  // Para verificar que el array se pasó correctamente a JavaScript
         </script>
 
-        <script src='js/carrito.js'></script> <!-- Para ejecutar aqui el 'carrito.js' -->
+        <script src='../js/carrito.js'></script> <!-- Para ejecutar aqui el 'carrito.js' -->
 
         <form id='guardarForm' method='POST' action='guardarDatosCarritoBBDD.php'>
                 <input type='hidden' name='productos' id='productosInput'>
@@ -125,7 +124,7 @@
 
             <!-- Botón de ir atrás -->
             <div class='d-flex justify-content-end mt-4'>
-                <a href='mainCliente.php' class='btn btn-warning'>
+                <a href='../mainCliente.php' class='btn btn-warning'>
                     <i class='fas fa-arrow-left'></i> Ir atrás
                 </a>
             </div>

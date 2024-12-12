@@ -1,9 +1,7 @@
 <?php
-namespace theBakery\public;
+namespace theBakery\public\src;
 
-use theBakery\public\src\ConexionDB;
-
-require_once("src/ConexionDB.php");
+require_once("ConexionDB.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
@@ -25,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query->execute([$name, $username, $mail, $id]);
     }
 
-    header('Location: mainAdmin.php'); // Redirigir al listado
+    header('Location: ../mainAdmin.php'); // Redirigir al listado
     exit;
 }
 ?>

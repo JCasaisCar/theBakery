@@ -1,13 +1,12 @@
 <?php 
     // Configuramos el namespace
-    namespace theBakery\public;
+    namespace theBakery\public\src;
 
     // Usamos una ruta de el namespace y el "Exception"
     use Exception;
-    use theBakery\public\src\ConexionDB;
 
     // Incluimos el archivo para la conexión a la base de datos
-    require_once("src/ConexionDB.php");
+    require_once("ConexionDB.php");
 
     // Comprobamos si la solicitud es del tipo POST, es decir, si se ha enviado bien el carrito
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,7 +30,7 @@
                 // Hacemos un "foreach" para recorrer el resultado de productos
                 foreach ($productos as $producto) {
                     if (isset($producto['totalConIVA'])) {
-                        $total += $producto['totalConIVA'];
+                        $total = $total + $producto['totalConIVA'];
                     }
                 }
 
@@ -86,7 +85,7 @@
 
 
                     // Redirigimos al usuario a la página de login
-                    window.location.href = 'index.php';</script>");
+                    window.location.href = '../index.php';</script>");
                 } catch (Exception $e) {
                     $conexion->rollBack();
                     exit('Error al guardar el pedido: ' . $e->getMessage());

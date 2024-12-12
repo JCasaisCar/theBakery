@@ -1,10 +1,10 @@
 <?php
     // Configuramos el namespace
-    namespace theBakery\public;
+    namespace theBakery\public\src;
 
     // Configuración básica del formulario para dar de alta un nuevo cliente
     $title = "Crear Cliente";
-    require_once("index1.php");
+    require_once("../index1.php");
 ?>
 
     <div class="container my-5">
@@ -31,4 +31,4 @@
         </form>
     </div>
 
-<?php require_once("index2.php"); ?>
+<?php require_once("../index2.php"); ?>

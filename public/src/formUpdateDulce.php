@@ -1,12 +1,11 @@
 <?php 
 // Configuramos el namespace
-namespace theBakery\public;
+namespace theBakery\public\src;
 
 // Usamos la ruta del namespace y PDO
 use PDO;
-use theBakery\public\src\ConexionDB;
 
-require_once("src/ConexionDB.php");
+require_once("ConexionDB.php");
 
 // Establecemos la conexión a la base de datos
 $conexionDB = ConexionDB::obtenerInstancia();
@@ -27,7 +26,7 @@ if (!$dulce) {
 }
 
 $title = "Actualizar Dulce";
-require_once("index1.php");
+require_once("../index1.php");
 
 // Mostramos el formulario de actualización
 echo ("<h3 class='mb-4'>Actualizar Dulce</h3>");
@@ -57,5 +56,5 @@ echo ("<form action='updateDulce.php' method='POST'>
     </form>");
 
 // Incluimos el archivo para el pie de página
-require_once("index2.php");
+require_once("../index2.php");
 ?>

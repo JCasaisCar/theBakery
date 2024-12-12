@@ -81,11 +81,11 @@ foreach ($clientes as $cliente) {
     // Agregamos los botones de actualizar y eliminar cliente
     echo ("</td>
             <td>
-                <form action='formUpdateCliente.php' method='POST' style='display:inline;'>
+                <form action='src/formUpdateCliente.php' method='POST' style='display:inline;'>
                     <input type='hidden' name='id' value='{$cliente['id']}'>
                     <button type='submit' class='btn btn-primary btn-sm'>Actualizar</button>
                 </form>
-                <form action='removeCliente.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarCliente(event);'>
+                <form action='src/removeCliente.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarCliente(event);'>
                     <input type='hidden' name='id' value='{$cliente['id']}'>
                     <button type='submit' class='btn btn-danger btn-sm'>Eliminar</button>
                 </form>
@@ -96,7 +96,7 @@ echo ("</tbody></table>");
 
 // Agregamos un botón para dar de alta un nuevo cliente
 echo ("<div class='text-end'>
-        <a href='formCreateCliente.php' class='btn btn-success'>Dar de Alta Nuevo Cliente</a>
+        <a href='src/formCreateCliente.php' class='btn btn-success'>Dar de Alta Nuevo Cliente</a>
     </div>");
 
 // Consultamos el listado de dulces (productos) con "PDO::FETCH_ASSOC" en el resultado para que nos arroje un array con clave valor, la clave es el nombre de la columna en la base de datos
@@ -124,11 +124,11 @@ foreach ($dulces as $dulce) {
             <td>{$dulce['precio']}</td>
             <td>{$dulce['categoria']}</td>
         <td>
-                <form action='formUpdateDulce.php' method='POST' style='display:inline;'>
+                <form action='src/formUpdateDulce.php' method='POST' style='display:inline;'>
                     <input type='hidden' name='id' value='{$dulce['id']}'>
                     <button type='submit' class='btn btn-primary btn-sm'>Actualizar</button>
                 </form>
-                <form action='removeDulce.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarDulce(event);'>
+                <form action='src/removeDulce.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarDulce(event);'>
                     <input type='hidden' name='id' value='{$dulce['id']}'>
                     <button type='submit' class='btn btn-danger btn-sm'>Eliminar</button>
                 </form>
@@ -139,7 +139,7 @@ echo ("</tbody></table>");
 
 // Botón para dar de alta un nuevo dulce
 echo ("<div class='text-end'>
-        <a href='formCreateDulce.php' class='btn btn-success'>Dar de Alta Nuevo Dulce</a>
+        <a href='src/formCreateDulce.php' class='btn btn-success'>Dar de Alta Nuevo Dulce</a>
     </div>");
 
 echo("<div class='text-center mt-4'>

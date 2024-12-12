@@ -1,12 +1,12 @@
 <?php
 // Configuramos el namespace
-namespace theBakery\public;
+namespace theBakery\public\src;
 
 // Usamos la variable "$title" para asignar el título de la página a "Crear Dulce"
 $title = "Crear Dulce";
 
 // Incluimos el archivo para la cabecera de el "HTML"
-require_once("index1.php");
+require_once("../index1.php");
 
 // Mostramos el formulario de creación
 echo ("<h3 class='mb-4'>Crear Nuevo Dulce</h3>");
@@ -36,5 +36,5 @@ echo ("<form action='insertDulce.php' method='POST'>
     </form>");
 
 // Incluimos el archivo para el pie de página
-require_once("index2.php");
+require_once("../index2.php");
 ?>

@@ -1,9 +1,7 @@
 <?php
-namespace theBakery\public;
+namespace theBakery\public\src;
 
-use theBakery\public\src\ConexionDB;
-
-require_once("src/ConexionDB.php");
+require_once("ConexionDB.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validar el parámetro 'id'
@@ -30,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = $conexion->prepare("DELETE FROM usuarios WHERE id = ?");
     $query->execute([$id]);
 
-    header('Location: mainAdmin.php'); // Redirigir al listado
+    header('Location: ../mainAdmin.php'); // Redirigir al listado
     exit;
 }
 ?>

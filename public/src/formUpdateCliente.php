@@ -1,11 +1,10 @@
 <?php
 // Configuramos el namespace
-namespace theBakery\public;
+namespace theBakery\public\src;
 
-use theBakery\public\src\ConexionDB;
 use PDO;
 
-require_once("src/ConexionDB.php");
+require_once("ConexionDB.php");
 
 // Conexión a la base de datos
 $conexionDB = ConexionDB::obtenerInstancia();
@@ -20,7 +19,7 @@ $cliente = $query->fetch(PDO::FETCH_ASSOC);
 
 // Configuración básica del formulario para dar de alta un nuevo cliente
 $title = "Actualizar Cliente";
-require_once("index1.php");
+require_once("../index1.php");
 ?>
 
     <div class="container my-5">
@@ -48,4 +47,4 @@ require_once("index1.php");
         </form>
     </div>
     
-<?php require_once("index2.php"); ?>
+<?php require_once("../index2.php"); ?>

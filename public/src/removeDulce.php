@@ -1,11 +1,8 @@
 <?php
 // Configuramos el namespace
-namespace theBakery\public;
+namespace theBakery\public\src;
 
-// Usamos la ruta del namespace
-use theBakery\public\src\Dulce;
-
-require_once("src/Dulce.php");
+require_once("Dulce.php");
 
 // Recogemos el ID del dulce a eliminar
 $id = $_POST['id'];
@@ -15,6 +12,6 @@ $dulce = new Dulce("", 0, "", "");
 $dulce->deleteDulce($id);
 
 // Redirigimos a la lista de dulces
-header('Location: mainAdmin.php');
+header('Location: ../mainAdmin.php');
 exit;
 ?>
