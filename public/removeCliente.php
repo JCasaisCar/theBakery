@@ -5,13 +5,13 @@ use theBakery\public\src\ConexionDB;
 
 require_once("src/ConexionDB.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Validar el parámetro 'id' de la URL
-    if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validar el parámetro 'id'
+    if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
         die('Error: ID inválido o no proporcionado');
     }
 
-    $id = (int) $_GET['id']; // Asegurar que es un número entero
+    $id = (int) $_POST['id']; // Asegurar que es un número entero
 
     // Conexión a la base de datos
     $conexionDB = ConexionDB::obtenerInstancia();

@@ -12,7 +12,7 @@ $conexionDB = ConexionDB::obtenerInstancia();
 $conexion = $conexionDB->obtenerConexion();
 
 // Obtener los datos del cliente por ID
-$id = $_GET['id'];
+$id = $_POST['id'];
 $query = $conexion->prepare("SELECT * FROM usuarios WHERE id = ?");
 $query->execute([$id]);
 $cliente = $query->fetch(PDO::FETCH_ASSOC);

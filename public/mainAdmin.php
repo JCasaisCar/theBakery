@@ -1,4 +1,4 @@
-<?php
+<?php 
 // Configuramos el namespace
 namespace theBakery\public;
 
@@ -81,8 +81,14 @@ foreach ($clientes as $cliente) {
     // Agregamos los botones de actualizar y eliminar cliente
     echo ("</td>
             <td>
-                <a href='formUpdateCliente.php?id={$cliente['id']}' class='btn btn-primary btn-sm'>Actualizar</a>
-                <button class='btn btn-danger btn-sm' onclick='confirmarEliminar({$cliente['id']})'>Eliminar</button>
+                <form action='formUpdateCliente.php' method='POST' style='display:inline;'>
+                    <input type='hidden' name='id' value='{$cliente['id']}'>
+                    <button type='submit' class='btn btn-primary btn-sm'>Actualizar</button>
+                </form>
+                <form action='removeCliente.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminar(event);'>
+                    <input type='hidden' name='id' value='{$cliente['id']}'>
+                    <button type='submit' class='btn btn-danger btn-sm'>Eliminar</button>
+                </form>
             </td>
         </tr>");
 }
@@ -150,9 +156,11 @@ function cerrarSesion() {
 }
 
 // Función para confirmar eliminación de un cliente
-function confirmarEliminar(id) {
-    if (confirm('¿Está seguro de que desea eliminar este cliente?')) {
-        window.location.href = `removeCliente.php?id=${id}`;
+function confirmarEliminar(event) {
+    if (!confirm('¿Está seguro de que desea eliminar este cliente?')) {
+        event.preventDefault(); // Detener el envío del formulario
+        return false;
     }
+    return true;
 }
 </script>
