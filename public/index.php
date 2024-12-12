@@ -44,3 +44,27 @@
     // Incluimos el archivo para el pie de página de el "HTML"
     require_once("index2.php");
 ?>
+
+
+
+<script>
+    // Ejecutamos la función para eliminar las cookies cuando se carga la página con "window.onload"
+    window.onload = function() {
+        eliminarCookies();
+    };
+
+    // Hacemos esta función para eliminar todas las cookies
+    function eliminarCookies() {
+            // Obtenemos todas las cookies
+            let cookies = document.cookie.split("; ");
+            
+            // Recorremos cada cookie y la eliminamos
+            for (let cookie of cookies) {
+                // Obtenemos el nombre de la cookie (antes del '=')
+                let cookieName = cookie.split("=")[0];
+                
+                // Establecemos la cookie con una fecha de expiración en el pasado para eliminarla
+                document.cookie = cookieName + "=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+    }
+</script>

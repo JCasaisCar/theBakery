@@ -35,8 +35,8 @@ CREATE TABLE pedidos (
     idCliente INT NOT NULL,                   -- Relación con usuarios
     fechaPedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha del pedido
     total DECIMAL(10, 2) DEFAULT 0.00,        -- Total del pedido
-    FOREIGN KEY (idCliente) REFERENCES usuarios(id) -- Relación con usuarios
-);
+    FOREIGN KEY (idCliente) REFERENCES usuarios(id) ON DELETE CASCADE -- Relación con usuarios
+);-- "ON DELETE CASCADE" para que cuando elimine un usuario se elimine el pedido
 
 -- Tabla de detalles de pedidos
 CREATE TABLE detalles_pedido (
@@ -46,8 +46,8 @@ CREATE TABLE detalles_pedido (
     cantidad INT NOT NULL,                    -- Cantidad comprada
     precioUnitario DECIMAL(10, 2) NOT NULL,   -- Precio por unidad
     subtotal DECIMAL(10, 2) NOT NULL,         -- Subtotal (cantidad * precioUnitario)
-    FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido) -- Relación con pedidos
-);
+    FOREIGN KEY (idPedido) REFERENCES pedidos(idPedido) ON DELETE CASCADE -- Relación con pedidos
+);-- "ON DELETE CASCADE" para que cuando elimine un pedido se elimine los detalles del pedido
 
 
 -- Insertamos los usuarios de prueba
