@@ -10,7 +10,6 @@
     use PDO;
     use PDOException;
 
-    
     class Cliente {
         private string $nombre;
         private string $usuario;
@@ -31,8 +30,6 @@
         }
 
         
-
-
         /**
          * Get the value of nombre
          */ 
@@ -310,7 +307,7 @@
                         return [];
                     }
                 } catch (PDOException $e) {
-                    // Manejo de errores de la base de datos
+                    // Manejamos los errores de la base de datos
                     echo "<script>console.log('Error en la consulta: " . $e->getMessage() . "')</script>";
                     return [];
                 }

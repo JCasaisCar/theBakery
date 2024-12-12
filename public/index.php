@@ -47,7 +47,6 @@
 ?>
 
 
-
 <script>
     // Ejecutamos la función para eliminar las cookies cuando se carga la página con "window.onload"
     window.onload = function() {

@@ -1,6 +1,6 @@
 "use strict";
 
-// Función para crear una tabla dinámica a partir del array de datos
+// Hacemos esta función para crear una tabla dinámica a partir del array de datos
 function crearTabla(data) {
     // Creamos la tabla
     const tabla = document.createElement('table');

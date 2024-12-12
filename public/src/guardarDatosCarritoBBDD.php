@@ -2,7 +2,7 @@
     // Configuramos el namespace
     namespace theBakery\public\src;
 
-    // Usamos una ruta de el namespace y el "Exception"
+    // Usamos el "Exception"
     use Exception;
 
     // Incluimos el archivo para la conexión a la base de datos

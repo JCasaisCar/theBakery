@@ -6,8 +6,6 @@
     use theBakery\public\src\ConexionDB;
     use PDO;
     use theBakery\public\src\Bollo;
-    use theBakery\public\src\Tarta;
-    use theBakery\public\src\Chocolate;
     use theBakery\public\src\Cliente;
 
     // Incluimos los archivos necesarios
@@ -135,10 +133,7 @@
         </table>
         </div>');
     }
-
-
-
-
+    
     echo("<h2 class='text-center'><button class='btn btn-danger' onclick='cerrarSesion()'>Cerrar sesión</button></h2>");
 
     // Incluimos el archivo para el pie de página de el "HTML"

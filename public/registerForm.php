@@ -11,7 +11,7 @@
 
 <div class="container my-5">
     <!-- Creamos un formulario HTML que enviará los datos a "register.php" utilizando el método POST -->
-     <!-- Usamos "onsubmit" para que cuando le demos al boton de "submit" antes de enviar los datos los valide con la función que hemos definido en js -->
+    <!-- Usamos "onsubmit" para que cuando le demos al boton de "submit" antes de enviar los datos los valide con la función que hemos definido en js -->
     <form action="register.php" method="POST" class="w-50 mx-auto p-4 border rounded shadow-sm" onsubmit="return validarFormulario(this)">
         
         <!-- Usamos un contenedor para el campo de entrada del nombre -->

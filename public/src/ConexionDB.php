@@ -5,15 +5,16 @@
     // Usamos el "PDO" y el "PDOException"
     use PDO;
     use PDOException;
+
     class ConexionDB {
         // Propiedad estática para mantener la única instancia de la clase
         private static $instancia = null;
         private $conexion;
 
-        // Configuración de conexión (ajusta estos valores según tu entorno)
+        // Configuración de conexión
         private $host = 'localhost';
-        private $usuario = 'root'; // Cambia si tienes otro usuario
-        private $password = '';    // Cambia si tienes una contraseña
+        private $usuario = 'root';
+        private $password = '';
         private $baseDatos = 'theBakery';
 
         // Constructor privado para evitar la creación de múltiples instancias
