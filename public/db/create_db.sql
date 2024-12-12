@@ -50,6 +50,19 @@ CREATE TABLE detalles_pedido (
 );-- "ON DELETE CASCADE" para que cuando elimine un pedido se elimine los detalles del pedido
 
 
+-- Insertamos el bollo
+INSERT INTO dulces (nombre, precio, descripcion, categoria, iva)
+VALUES ('Croissant', 1.20, 'Bollo relleno de chocolate', 'Bollos', 21);
+
+-- Insertamos el chocolate
+INSERT INTO dulces (nombre, precio, descripcion, categoria, iva)
+VALUES ('BarraDeChocolate', 2.50, 'Chocolate con leche y almendras', 'Chocolates', 21);
+
+-- Insertamos la tarta
+INSERT INTO dulces (nombre, precio, descripcion, categoria, iva)
+VALUES ('TartaDeQueso', 15.00, 'Deliciosa tarta de queso al horno', 'Tartas', 21);
+
+
 -- Insertamos los usuarios de prueba
 INSERT INTO usuarios (name, username, password, email, rol)
 VALUES

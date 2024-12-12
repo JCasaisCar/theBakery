@@ -24,7 +24,7 @@ function validarFormulario(form) {
             // Validamos que la contraseña sea correcta (al menos 5 caracteres)
             if (element.name === 'password' && element.value.length < 5) {
                 isValid = false;
-                errorMessage = 'La contraseña debe tener al menos 6 caracteres.';
+                errorMessage = 'La contraseña debe tener al menos 5 caracteres.';
                 break;
             }
         }

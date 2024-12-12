@@ -16,27 +16,8 @@
     require_once("src/Chocolate.php");
     require_once("src/Cliente.php");
 
-    // Añadimos un bollo
-    $nombreBollo = "Croissant";
-    // Usamos "str_replace" para quitar los espacios
-    $nombreBolloSinEspacios = str_replace(" ", "", $nombreBollo);
-    $bollo = new Bollo($nombreBolloSinEspacios, 1.20, "Bollo relleno de chocolate", "Bollos", "Chocolate");
-    $bollo->deleteAllDulce(); // Eliminar todos los dulces antes de añadir lo primero para que no se repitan
-    $bollo->createDulce();
-
-    // Añadimos un chocolate
-    $nombreChocolate = "Barra De Chocolate";
-    // Usamos "str_replace" para quitar los espacios
-    $nombreChocolateSinEspacios = str_replace(" ", "", $nombreChocolate);
-    $chocolate = new Chocolate($nombreChocolateSinEspacios, 2.50, "Chocolate con leche y almendras", "Chocolates", 10, 20);
-    $chocolate->createDulce(); 
-
-    // Añadimos una tarta
-    $nombreTarta = "Tarta De Queso";
-    // Usamos "str_replace" para quitar los espacios
-    $nombreTartaSinEspacios = str_replace(" ", "", $nombreTarta);
-    $tarta = new Tarta($nombreTartaSinEspacios, 15.00, "Deliciosa tarta de queso al horno", "Tartas", ["chocolate", "galleta"], 2, 4, 20);
-    $tarta->createDulce(); 
+    
+    $bollo = new Bollo("", 0, "", "", "");
 
     // Con "readAll" sacamos la lista de dulces
     $arrayDulces = $bollo->readAllDulce();

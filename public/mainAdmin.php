@@ -85,7 +85,7 @@ foreach ($clientes as $cliente) {
                     <input type='hidden' name='id' value='{$cliente['id']}'>
                     <button type='submit' class='btn btn-primary btn-sm'>Actualizar</button>
                 </form>
-                <form action='removeCliente.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminar(event);'>
+                <form action='removeCliente.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarCliente(event);'>
                     <input type='hidden' name='id' value='{$cliente['id']}'>
                     <button type='submit' class='btn btn-danger btn-sm'>Eliminar</button>
                 </form>
@@ -123,9 +123,24 @@ foreach ($dulces as $dulce) {
             <td>{$dulce['nombre']}</td>
             <td>{$dulce['precio']}</td>
             <td>{$dulce['categoria']}</td>
+        <td>
+                <form action='formUpdateDulce.php' method='POST' style='display:inline;'>
+                    <input type='hidden' name='id' value='{$dulce['id']}'>
+                    <button type='submit' class='btn btn-primary btn-sm'>Actualizar</button>
+                </form>
+                <form action='removeDulce.php' method='POST' style='display:inline;' onsubmit='return confirmarEliminarDulce(event);'>
+                    <input type='hidden' name='id' value='{$dulce['id']}'>
+                    <button type='submit' class='btn btn-danger btn-sm'>Eliminar</button>
+                </form>
+            </td>
         </tr>");
 }
 echo ("</tbody></table>");
+
+// Botón para dar de alta un nuevo dulce
+echo ("<div class='text-end'>
+        <a href='formCreateDulce.php' class='btn btn-success'>Dar de Alta Nuevo Dulce</a>
+    </div>");
 
 echo("<div class='text-center mt-4'>
         <button class='btn btn-danger' onclick='cerrarSesion()'>Cerrar sesión</button>
@@ -156,8 +171,17 @@ function cerrarSesion() {
 }
 
 // Función para confirmar eliminación de un cliente
-function confirmarEliminar(event) {
+function confirmarEliminarCliente(event) {
     if (!confirm('¿Está seguro de que desea eliminar este cliente?')) {
+        event.preventDefault(); // Detener el envío del formulario
+        return false;
+    }
+    return true;
+}
+
+// Función para confirmar eliminación de un cliente
+function confirmarEliminarDulce(event) {
+    if (!confirm('¿Está seguro de que desea eliminar este dulce?')) {
         event.preventDefault(); // Detener el envío del formulario
         return false;
     }

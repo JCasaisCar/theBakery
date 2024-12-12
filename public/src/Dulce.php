@@ -12,7 +12,7 @@
     use PDO;
     // Al hacer la clase "Dulce" abstracta evita instancias directas, obligamos a las hijas a implementar métodos clave y mejoramos la claridad del diseño
     // Usamos "implements" para implementar una interfaz
-    abstract class Dulce implements Resumible {
+    class Dulce implements Resumible {
         private string $nombre;
         private float $precio;
         private string $descripcion;
